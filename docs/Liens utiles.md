@@ -7,4 +7,4 @@ JWT : https://github.com/GoogleCloudPlatform/istio-samples/tree/master/security-
 https://istiobyexample.dev/jwt/
 
 
-Ingress-gateway
+Ingress-gateway : https://dev.to/vivekanandrapaka/istio-ingress-gateway-vs-istio-gateway-vs-kubernetes-ingress-5hgg
