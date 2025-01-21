@@ -43,5 +43,33 @@ k apply -f kiali_gateway.yaml -n istio-system # IMPORTANT : mettre le -n pour sp
 
 k apply -f force_mtls.yaml
 
+## Moyen de le tester
+
+kubectl exec $(kubectl get pod -l app=curl -n curl -o jsonpath={.items..metadata.name}) -n curl -c istio-proxy -- curl http://httpbin.httpbin:8000/ -o /dev/null -s -w '%{http_code}\n'  
+
+Cette commande doit renvoyer une erreur 56, la ou elle fonctionnais avant, elle renvoyais 200
+
+
+
 # Maintenant on va mieux manipuler les Requestsauthentication
+# Pour le système de JWT
+
+
+WORKING  
+ALORS COMMENT J'AI FAIT
+
+
+Merci le lien https://istiobyexample.dev/jwt/
+
+## Applqiuer une requestAuthentication pour valider un token en particulier :
+
+k apply -f request_authentication.yaml
+
+## Ensuite, nous devons configurer une authorizationPolicy, qui s'assureras que toutes les requpetes ont un JWT, en rejetant les requetes qyu n'en ont pas, en retournant une erreur 403  
+
+k apply -f authorizationpolicy.yaml
+
+TOKEN=$(curl https://raw.githubusercontent.com/istio/istio/release-1.24/security/tools/jwt/samples/demo.jwt -s) && echo "$TOKEN" | cut -d '.' -f2 - | base64 --decode
+
+kubectl exec $(kubectl get pod -l app=curl -n curl -o jsonpath={.items..metadata.name}) -n curl -c istio-proxy -- curl http://httpbin.httpbin:8000/ -o /dev/null --header "Authorization: Bearer $TOKEN" -s -w '%{http_code}\n'
 
