@@ -99,29 +99,7 @@ Access Kiali using the External IP from the ingress gateway.
 
 ## 5. Configuring JWT Authentication
 
-### RequestAuthentication
-
-1. Apply a `RequestAuthentication` policy:
-   ```bash
-   kubectl apply -f request_authentication.yaml
-   ```
-
-2. Configure an `AuthorizationPolicy` to enforce JWT verification:
-   ```bash
-   kubectl apply -f authorizationpolicy.yaml
-   ```
-
-3. Fetch a demo JWT token:
-   ```bash
-   TOKEN=$(curl -s https://raw.githubusercontent.com/istio/istio/release-1.24/security/tools/jwt/samples/demo.jwt)
-   ```
-
-4. Test with the token:
-   ```bash
-   kubectl exec $(kubectl get pod -l app=curl -n curl -o jsonpath={.items..metadata.name}) -n curl -c istio-proxy -- curl http://httpbin.httpbin:8000/ --header "Authorization: Bearer $TOKEN" -s -o /dev/null -w '%{http_code}\n'
-   ```
-
-   Expect a `200` response for valid tokens.
+For detailed instructions on setting up JWT authentication, refer to the [JWT Authentication with Istio guide](./JWT/README.md).
 
 ---
 
