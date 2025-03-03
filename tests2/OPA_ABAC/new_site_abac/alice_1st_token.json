@@ -1,0 +1,39 @@
+{
+    "exp": 1740966682,
+    "iat": 1740966382,
+    "jti": "fc05d48a-8651-447a-90fe-109082697a79",
+    "iss": "http://192.168.39.239:31552/realms/new_site_realm",
+    "aud": "account",
+    "sub": "6fe05c45-01c7-4392-ba77-7693cdf64f7f",
+    "typ": "Bearer",
+    "azp": "new_site_client",
+    "sid": "3dff36d2-2333-45f1-822e-51c7b749219c",
+    "acr": "1",
+    "allowed-origins": [
+      ""
+    ],
+    "realm_access": {
+      "roles": [
+        "offline_access",
+        "uma_authorization",
+        "default-roles-new_site_realm"
+      ]
+    },
+    "resource_access": {
+      "account": {
+        "roles": [
+          "manage-account",
+          "manage-account-links",
+          "view-profile"
+        ]
+      }
+    },
+    "scope": "profile email",
+    "email_verified": true,
+    "name": "Alice PaysMerveilles",
+    "location": "paris",
+    "preferred_username": "alice",
+    "given_name": "Alice",
+    "family_name": "PaysMerveilles",
+    "email": "alice.paysmerveilles@yoyo.com"
+  }
