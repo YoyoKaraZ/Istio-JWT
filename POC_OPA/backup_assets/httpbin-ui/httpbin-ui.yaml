@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: httpbin-ui
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpbin-ui
+  labels:
+    app: httpbin-ui
+    service: httpbin-ui
+spec:
+  ports:
+  - name: http
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: httpbin-ui
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpbin-ui
+  namespace: httpbin-ui
+  labels:
+    app: httpbin-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: httpbin-ui
+  template:
+    metadata:
+      labels:
+        app: httpbin-ui
+    spec:
+      containers:
+        - name: http-ui
+          image: liyasthomas/postwoman  # Version open-source de Postman
+          ports:
+            - containerPort: 3000
+

@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1
+kind: Gateway
+metadata:
+  name: httpbin-default-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - httpbin-default.example.com
+---
+apiVersion: networking.istio.io/v1
+kind: VirtualService
+metadata:
+  name: httpbin-default
+spec:
+  hosts:
+  - httpbin-default.example.com
+  gateways:
+  - httpbin-default-gateway
+  http:
+  - route:
+    - destination:
+        host: httpbin-default
+        port:
+          number: 8000

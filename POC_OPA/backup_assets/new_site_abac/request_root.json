@@ -1,0 +1,81 @@
+{
+  "decision_id": "2c3574fa-934f-4c38-9779-a079299a03fb",
+  "input": {
+    "attributes": {
+      "destination": {
+        "address": {
+          "socketAddress": {
+            "address": "10.244.1.68",
+            "portValue": 5000
+          }
+        },
+        "principal": "spiffe://cluster.local/ns/default/sa/default"
+      },
+      "metadataContext": {},
+      "request": {
+        "http": {
+          "headers": {
+            ":authority": "new-site.com",
+            ":method": "GET",
+            ":path": "/",
+            ":scheme": "http",
+            "accept": "*/*",
+            "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKemlDbTJvX3d4YjdXQUZ1eWxVYnA3YWh0RFpQRndLMWptU1lxTXlFRFZRIn0.eyJleHAiOjE3NDA5NjgzNDAsImlhdCI6MTc0MDk2ODA0MCwianRpIjoiOTQ1NmQzZDAtYTVhMi00ZDNmLTk4Y2QtMDU4NDgyZWZlYzc4IiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMzkuMjM5OjMxNTUyL3JlYWxtcy9uZXdfc2l0ZV9yZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI2ZmUwNWM0NS0wMWM3LTQzOTItYmE3Ny03NjkzY2RmNjRmN2YiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJuZXdfc2l0ZV9jbGllbnQiLCJzaWQiOiJkMTk4MTdmMC1jMWM1LTQ3NjUtOGU0ZC0xYmM4Yjc1YmU4ZTAiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbmV3X3NpdGVfcmVhbG0iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwibmFtZSI6IkFsaWNlIFBheXNNZXJ2ZWlsbGVzIiwibG9jYXRpb24iOiJwYXJpcyIsInByZWZlcnJlZF91c2VybmFtZSI6ImFsaWNlIiwiZ2l2ZW5fbmFtZSI6IkFsaWNlIiwiZmFtaWx5X25hbWUiOiJQYXlzTWVydmVpbGxlcyIsImVtYWlsIjoiYWxpY2UucGF5c21lcnZlaWxsZXNAeW95by5jb20ifQ.I3H7DADTDXhD3IgMbRpCfIenKzySQlUwGfCIZAPpWfO_l7VUhePNBwunYEql1NGkUkVD9iTvNRix6_NCGTDtatFNeWLDAWBjWzVwibSyQEQnYZTWyNN3ZOtozt73hZ4VD0YLHXkSPUe3d1bAbtzu3nsF5XAcBnnU7P-noc-WvSAF-ddiOKcOU_Jjfjl_IuJ6AmDrKOnNnCATnOjp3qu6Cf6MgB9IxJZBFbZx8UuSruZtTcJWfNFAW6mdDLeEzf-BPq-8gx5giAf9SL7odvR8Qz_rXi5Z7xAVW9TNhJcWT2sekmHE99bhem4V6gnutJyHOZ9SNaGGcFGVR1KAxC3wgg",
+            "user-agent": "curl/8.12.1",
+            "x-envoy-attempt-count": 1,
+            "x-envoy-internal": true,
+            "x-forwarded-client-cert": "By=spiffe://cluster.local/ns/default/sa/default;Hash=71d96761c299c7cd315c3a3f47cba9d6845e7ccd352ceaf99f09e3fa3db0c0da;Subject=\"\";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account",
+            "x-forwarded-for": "10.244.0.1",
+            "x-forwarded-proto": "http",
+            "x-request-id": "d5765fbb-bcf8-495c-8ae7-c1420c174ca6"
+          },
+          "host": "new-site.com",
+          "id": 9533573131939908000,
+          "method": "GET",
+          "path": "/",
+          "protocol": "HTTP/1.1",
+          "scheme": "http"
+        },
+        "time": {
+          "nanos": 514849000,
+          "seconds": 1740968045
+        }
+      },
+      "routeMetadataContext": {},
+      "source": {
+        "address": {
+          "socketAddress": {
+            "address": "10.244.1.57",
+            "portValue": 43998
+          }
+        },
+        "principal": "spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"
+      }
+    },
+    "parsed_body": null,
+    "parsed_path": [
+      ""
+    ],
+    "parsed_query": {},
+    "truncated_body": false,
+    "version": {
+      "encoding": "protojson",
+      "ext_authz": "v3"
+    }
+  },
+  "labels": {
+    "id": "7fc035cd-3027-41af-a95c-512213f3a191",
+    "version": "1.1.0"
+  },
+  "level": "info",
+  "metrics": {
+    "timer_rego_query_eval_ns": 140396,
+    "timer_server_handler_ns": 487919
+  },
+  "msg": "Decision Log",
+  "path": "istio/authz/allow",
+  "result": true,
+  "time": "2025-03-03T02:14:05Z",
+  "timestamp": "2025-03-03T02:14:05.516384742Z",
+  "type": "openpolicyagent.org/decision_logs"
+}

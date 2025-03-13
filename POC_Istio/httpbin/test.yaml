@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-specific-pod
+  namespace: httpbin  # Namespace of the destination workload
+spec:
+  selector:
+    matchLabels:
+      app: httpbin  # Label of the destination pod
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        namespaces: ["curl"]  # Namespace of the source pod

@@ -1,0 +1,13 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all-others
+  namespace: httpbin  # Namespace of the destination workload
+spec:
+  selector:
+    matchLabels:
+      app: httpbin  # Label of the destination pod
+  action: DENY
+  rules:
+  - {}  # Match all traffic
+

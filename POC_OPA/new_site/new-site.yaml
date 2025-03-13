@@ -1,0 +1,93 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-site
+  annotations:
+    openpolicyagent.org/policy: |
+      package istio.authz
+  
+      default allow := false
+  
+      jwks_request(url) := http.send({
+        "url": url,
+        "method": "GET",
+        "force_cache": true,
+        "force_cache_duration_seconds": 3600, # Cache response for an hour
+      })
+  
+      jwks := jwks_request("http://192.168.39.239:32262/realms/new_site_realm/protocol/openid-connect/certs").raw_body
+  
+      correct_port if input.attributes.destination.address.socketAddress.portValue == 5000
+  
+      # Endpoint management
+      endpoint := input.parsed_path[0]
+  
+      correct_endpoint if endpoint == claims.location
+  
+      correct_endpoint if endpoint == ""
+  
+      allow if {
+        correct_port
+        correct_endpoint
+      }
+  
+      # JWT handling
+  
+      claims := payload if {
+        # Verify the signature on the Bearer token. In this example the secret is
+        # hardcoded into the policy however it could also be loaded via data or
+        # an environment variable. Environment variables can be accessed using
+        # the `opa.runtime()` built-in function.
+  
+        # FIX ME
+        io.jwt.verify_rs256(bearer_token, jwks)
+  
+        # This statement invokes the built-in function `io.jwt.decode` passing the
+        # parsed bearer_token as a parameter. The `io.jwt.decode` function returns an
+        # array:
+        #
+        #	[header, payload, signature]
+        #
+        # In Rego, you can pattern match values using the `=` and `:=` operators. This
+        # example pattern matches on the result to obtain the JWT payload.
+        [_, payload, _] := io.jwt.decode(bearer_token)
+      }
+  
+      bearer_token := t if {
+        # Bearer tokens are contained inside of the HTTP Authorization header. This rule
+        # parses the header and extracts the Bearer token value. If no Bearer token is
+        # provided, the `bearer_token` value is undefined.
+        v := input.attributes.request.http.headers.authorization
+        startswith(v, "Bearer ")
+        t := substring(v, count("Bearer "), -1)
+      }
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: new-site
+  template:
+    metadata:
+      labels:
+        app: new-site
+    spec:
+      containers:
+        - name: new-site
+          image: website_cities:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: new-site
+spec:
+  selector:
+    app: new-site
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+

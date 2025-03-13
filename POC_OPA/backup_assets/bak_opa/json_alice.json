@@ -1,0 +1,80 @@
+{
+    "decision_id": "3a6297b8-45d5-4606-ae5a-6f6d8fa563f8",
+    "input": {
+      "attributes": {
+        "destination": {
+          "address": {
+            "socketAddress": {
+              "address": "10.244.0.189",
+              "portValue": 8080
+            }
+          },
+          "principal": "spiffe://cluster.local/ns/default/sa/httpbin-default"
+        },
+        "metadataContext": {},
+        "request": {
+          "http": {
+            "headers": {
+              ":authority": "httpbin-default.default.svc.cluster.local:8000",
+              ":method": "GET",
+              ":path": "/image/png",
+              ":scheme": "http",
+              "accept": "*/*",
+              "authorization": "Basic YWxpY2U6cGFzc3dvcmQ=",
+              "user-agent": "curl/8.11.1",
+              "x-envoy-attempt-count": 1,
+              "x-forwarded-client-cert": "By=spiffe://cluster.local/ns/default/sa/httpbin-default;Hash=aa0d301c2780beacf199ef4979d7b8714e5292c24cc1cfcc00ca2ef9bf553ea3;Subject=\"\";URI=spiffe://cluster.local/ns/curl/sa/curl",
+              "x-forwarded-proto": "http",
+              "x-request-id": "8d06df46-2ed6-4eae-9ce8-451661a8012e"
+            },
+            "host": "httpbin-default.default.svc.cluster.local:8000",
+            "id": 5016982396385466000,
+            "method": "GET",
+            "path": "/image/png",
+            "protocol": "HTTP/1.1",
+            "scheme": "http"
+          },
+          "time": {
+            "nanos": 508992000,
+            "seconds": 1740060064
+          }
+        },
+        "routeMetadataContext": {},
+        "source": {
+          "address": {
+            "socketAddress": {
+              "address": "10.244.0.191",
+              "portValue": 56182
+            }
+          },
+          "principal": "spiffe://cluster.local/ns/curl/sa/curl"
+        }
+      },
+      "parsed_body": null,
+      "parsed_path": [
+        "image",
+        "png"
+      ],
+      "parsed_query": {},
+      "truncated_body": false,
+      "version": {
+        "encoding": "protojson",
+        "ext_authz": "v3"
+      }
+    },
+    "labels": {
+      "id": "b2cbce82-4ffb-41ab-bebb-fd475c3cf684",
+      "version": "1.1.0"
+    },
+    "level": "info",
+    "metrics": {
+      "timer_rego_query_eval_ns": 177100,
+      "timer_server_handler_ns": 280080
+    },
+    "msg": "Decision Log",
+    "path": "istio/authz/allow",
+    "result": false,
+    "time": "2025-02-20T14:01:04Z",
+    "timestamp": "2025-02-20T14:01:04.509778354Z",
+    "type": "openpolicyagent.org/decision_logs"
+  }

@@ -1,0 +1,14 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: cities-app-authz
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: new-site
+  rules:
+    - when:
+        - key: request.auth.claims[iss]
+          values: ["http://192.168.39.239:31552/realms/new_site_realm"]
+

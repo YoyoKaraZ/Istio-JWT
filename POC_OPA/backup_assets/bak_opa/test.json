@@ -1,0 +1,88 @@
+{
+  "decision_id": "499685d2-e8ab-4bdb-ad62-c9e58e23989d",
+  "input": {
+    "attributes": {
+      "destination": {
+        "address": {
+          "socketAddress": {
+            "address": "10.244.0.189",
+            "portValue": 8080
+          }
+        },
+        "principal": "spiffe://cluster.local/ns/default/sa/httpbin-default"
+      },
+      "metadataContext": {},
+      "request": {
+        "http": {
+          "headers": {
+            ":authority": "httpbin-default.example.com",
+            ":method": "GET",
+            ":path": "/",
+            ":scheme": "http",
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "accept-encoding": "gzip, deflate",
+            "accept-language": "fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3",
+            "authorization": "Basic Ym9iOnBhc3N3b3Jk",
+            "cache-control": "no-cache",
+            "cookie": "_ga_BBJ3R80PJT=GS1.1.1739742115.1.1.1739742573.55.0.0; _ga=GA1.1.733504523.1739742116",
+            "pragma": "no-cache",
+            "priority": "u=0, i",
+            "upgrade-insecure-requests": 1,
+            "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:135.0) Gecko/20100101 Firefox/135.0",
+            "x-envoy-attempt-count": 1,
+            "x-envoy-internal": true,
+            "x-forwarded-client-cert": "By=spiffe://cluster.local/ns/default/sa/httpbin-default;Hash=92846f5a1c24d449da41f7f4287128f64bd119a0c396282155113f8fcedf80ea;Subject=\"\";URI=spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account",
+            "x-forwarded-for": "10.244.0.1",
+            "x-forwarded-proto": "http",
+            "x-request-id": "c1fd71c7-7266-4147-9441-3ea487139aa8"
+          },
+          "host": "httpbin-default.example.com",
+          "id": 9007975553189462000,
+          "method": "GET",
+          "path": "/",
+          "protocol": "HTTP/1.1",
+          "scheme": "http"
+        },
+        "time": {
+          "nanos": 7108000,
+          "seconds": 1740061384
+        }
+      },
+      "routeMetadataContext": {},
+      "source": {
+        "address": {
+          "socketAddress": {
+            "address": "10.244.0.184",
+            "portValue": 33384
+          }
+        },
+        "principal": "spiffe://cluster.local/ns/istio-system/sa/istio-ingressgateway-service-account"
+      }
+    },
+    "parsed_body": null,
+    "parsed_path": [
+      ""
+    ],
+    "parsed_query": {},
+    "truncated_body": false,
+    "version": {
+      "encoding": "protojson",
+      "ext_authz": "v3"
+    }
+  },
+  "labels": {
+    "id": "b2cbce82-4ffb-41ab-bebb-fd475c3cf684",
+    "version": "1.1.0"
+  },
+  "level": "info",
+  "metrics": {
+    "timer_rego_query_eval_ns": 376709,
+    "timer_server_handler_ns": 599494
+  },
+  "msg": "Decision Log",
+  "path": "istio/authz/allow",
+  "result": true,
+  "time": "2025-02-20T14:23:04Z",
+  "timestamp": "2025-02-20T14:23:04.008641671Z",
+  "type": "openpolicyagent.org/decision_logs"
+}
