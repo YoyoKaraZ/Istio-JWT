@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: EnvoyFilter
+metadata:
+  name: add-jwt-header
+  namespace: curl
+spec:
+  workloadSelector:
+    labels:
+      app: curl
+  configPatches:
+    - applyTo: VIRTUAL_HOST
+      match:
+        context: SIDECAR_OUTBOUND
+      patch:
+        operation: MERGE
+        value:
+          request_headers_to_add:
+            - header:
+                key: "Authorization"
+                value: "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJYRll1bW15UnhuWjdHSWVqdHFMTnFWbmk5QVUwckkzaFFoZng2aWhRNGZRIn0.eyJleHAiOjE3NDE3MDAxNjEsImlhdCI6MTc0MTY5OTg2MSwianRpIjoiNDliMDdhMjItNTIxZS00NmUzLThiOTMtZTZiN2ZhYjgwNGUxIiwiaXNzIjoiaHR0cDovLzE5Mi4xNjguMzkuMjM5OjMyMjYyL3JlYWxtcy9uZXdfc2l0ZV9yZWFsbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJkNjk3NWM0Yi0yYTY5LTQ1MTItODA0OC1hYWE1YTA3Y2I2ZTYiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJuZXdfc2l0ZV9jbGllbnQiLCJzaWQiOiIzYzhkZTkyZC1hMDc0LTRmMzktYjEzOS1kNjUyMGQ2M2YwNDYiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIi8qIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsInVtYV9hdXRob3JpemF0aW9uIiwiZGVmYXVsdC1yb2xlcy1uZXdfc2l0ZV9yZWFsbSJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiQWxpY2UgUGF5c01lcnZlaWxsZXMiLCJsb2NhdGlvbiI6InBhcmlzIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWxpY2UiLCJnaXZlbl9uYW1lIjoiQWxpY2UiLCJmYW1pbHlfbmFtZSI6IlBheXNNZXJ2ZWlsbGVzIiwiZW1haWwiOiJhbGljZS5wYXlzbWVydmVpbGxlc0B5b3lvLmNvbSJ9.raRjQcTP78xV2yhvRoqRmBqLWl9psh6nbrr8Hr3wWqsH4sYd6vdytS779NsUVX9n6ffB1P5xFEh-wqbYeRR97M5xVX6w9IU9beR6TLnt8gMgw3_jxobXtDp3t76jrRPn3j9gI73GsBxciz9-n-X7tErXqMceIxOKFYqC9LBqgTeKv9mxuan5noD-wfBDWu0w_zBfj7ab0ycRD_YQ7HiLJ_20Qy-iWDYeOimhsgI4YVuvWL0SYjaAfFtYTbjyYSC4yZGpDyQGQxoUBCxbEusv-xxRKHKQzeMl_AsWfcjwd4Mf89kdQ-ApfLMmEdjZhqfQEGGQ95M6OaplRSk6_3gM8Q" 

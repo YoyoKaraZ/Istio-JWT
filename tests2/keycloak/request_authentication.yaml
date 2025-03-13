@@ -8,6 +8,6 @@ spec:
     matchLabels:
       app: new-site
   jwtRules:
-    - issuer: "http://192.168.39.239:31552/realms/new_site_realm"
-      jwksUri: "http://192.168.39.239:31552/realms/new_site_realm/protocol/openid-connect/certs"
+    - issuer: "http://192.168.39.239:32262/realms/new_site_realm"
+      jwksUri: "http://192.168.39.239:32262/realms/new_site_realm/protocol/openid-connect/certs"
 
